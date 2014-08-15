@@ -12,4 +12,11 @@ describe Route do
     expect(DB.exec("SELECT * FROM routes;").first['island_ids']).to eq ("[1, 2, 3, 4, 5]")
   end
 
+  it 'will list all routes' do
+    Route.create_route("West Winds Loop", [1,2,3,4,5])
+    Route.create_route("East Winds Loop", [5,4,3,2,1])
+    list = Route.list_routes
+    expect(list).to eq ["West Winds Loop", "East Winds Loop"]
+  end
+
 end
