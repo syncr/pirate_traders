@@ -7,4 +7,9 @@ class Route_Step
     @island_id1 = attributes[:island_id1]
     @island_id2 = attributes[:island_id2]
   end
+
+  def self.create_route(user_input)
+    DB.exec("INSERT INTO routes (name) VALUES ('#{user_input}');")
+  end
+
 end

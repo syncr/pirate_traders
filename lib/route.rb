@@ -7,4 +7,8 @@ class Route
     @name = attributes[:name]
     @island_ids = attributes[:island_ids]
   end
+
+  def self.create_route(route_name, island_ids)
+    DB.exec("INSERT INTO routes (name, island_ids) VALUES ('#{route_name}', '#{island_ids}');")
+  end
 end
