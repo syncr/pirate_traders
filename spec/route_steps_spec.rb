@@ -6,8 +6,5 @@ describe Route_Step do
     expect(new_route_step).to be_an_instance_of Route_Step
   end
 
-  it 'will add a new instance of Port to the DB' do
-    Port.create_port("Tortuga")
-    expect(DB.exec("SELECT * FROM ports;").first['name']).to eq 'Tortuga'
-  end
+
 end

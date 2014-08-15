@@ -11,4 +11,13 @@ class Route
   def self.create_route(route_name, island_ids)
     DB.exec("INSERT INTO routes (name, island_ids) VALUES ('#{route_name}', '#{island_ids}');")
   end
+
+  def self.list_routes
+    routes = []
+    results = DB.exec("SELECT name FROM routes")
+    results.each do |result|
+      routes << result["name"]
+    end
+    routes
+  end
 end

@@ -28,6 +28,9 @@ def pirate_ui(choice)
     user_input = gets.chomp
     Port.create_port(user_input)
     puts "Yar, ye port #{user_input} be added!"
+  when '2'
+    puts "Yar, here be ye list'o'ports!"
+    Port.list_ports
   when '3'
     puts 'What route be ye addin!?'
     user_input = gets.chomp

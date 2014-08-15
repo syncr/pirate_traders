@@ -11,4 +11,11 @@ describe Port do
     expect(DB.exec("SELECT * FROM ports;").first['name']).to eq 'Tortuga'
   end
 
+  it 'will list all ports' do
+    Port.create_port("Tortuga")
+    Port.create_port("Puerto Vallarta")
+    list = Port.list_ports
+    expect(list).to eq ["Tortuga", "Puerto Vallarta"]
+  end
+
 end
