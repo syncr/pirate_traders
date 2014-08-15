@@ -15,17 +15,20 @@ def main_menu
   puts 'Press 6 to show all lines associated with a port'
   puts 'Press 7 to show all stations associted with a route'
 
-  choice = gets.chomp.to_i
+  choice = gets.chomp
   pirate_ui(choice)
 end
 
 def pirate_ui(choice)
+  puts choice
+  puts 'Yargh. Be welcome!'
   case choice
   when '1'
     puts 'What port be ye addin!?'
     user_input = gets.chomp
-    create_port(user_input)
-    puts 'Yar, ye port #{user_input} be added!'
+    Port.create_port(user_input)
+    puts "Yar, ye port #{user_input} be added!"
+  else "Nargh!"
   end
 end
 main_menu

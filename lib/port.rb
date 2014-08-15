@@ -7,7 +7,7 @@ class Port
     @name = attributes[:name]
   end
 
-  def create_port(user_input)
+  def self.create_port(user_input)
     DB.exec("INSERT INTO ports (name) VALUES ('#{user_input}');")
   end
 end
