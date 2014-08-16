@@ -15,7 +15,7 @@ def main_menu
   puts 'Press 4 to view all routes'
   puts 'Press 5 to add a leg to a route'
   puts 'Press 6 to show all lines associated with a port'
-  puts 'Press 7 to show all stations associted with a route'
+  puts 'Press 7 to show all stations associated with a route'
 
   choice = gets.chomp
   pirate_ui(choice)
