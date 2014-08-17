@@ -26,11 +26,10 @@ describe Port do
   end
 
   it 'will allow user to delete a port (DELETE)' do
-    Port.create_port("Tortilla")
+    Port.create_port("Tortuga")
     Port.create_port("Puerto Vallarta")
     Port.delete_port("Puerto Vallarta")
     list = Port.read_ports
     expect(list).to eq ["Tortuga"]
   end
-
 end

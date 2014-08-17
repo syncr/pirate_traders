@@ -24,7 +24,10 @@ class Port
     DB.exec("UPDATE ports SET name = '#{new_name}' WHERE name = '#{old_name}';")
   end
 
-  
+  def self.delete_port(name)
+    DB.exec("DELETE FROM ports WHERE name = '#{name}';")
+  end
+
 end
 # tortuga = Port.new(1)
 # puerto vallarta (2)
