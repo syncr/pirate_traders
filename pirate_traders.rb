@@ -42,7 +42,6 @@ def pirate_ui(choice)
     puts "\n"
     puts Port.read_ports
     puts "\n"
-
   when '3'
     puts 'What route be ye addin!?'
     route_name = gets.chomp

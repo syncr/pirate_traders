@@ -6,15 +6,30 @@ describe Route do
     expect(new_route).to be_an_instance_of Route
   end
 
-  it 'will create a new route in the DB' do
+  it 'will CREATE a new route in the DB' do
     Route.create_route("West Winds Loop")
     expect(DB.exec("SELECT * FROM routes;").first['name']).to eq 'West Winds Loop'
   end
 
-  it 'will list all routes' do
+  it 'will list all routes (READ)' do
     Route.create_route("West Winds Loop")
     Route.create_route("East Winds Loop")
-    list = Route.list_routes
+    list = Route.read_routes
     expect(list).to eq ["West Winds Loop", "East Winds Loop"]
   end
+
+    it 'will allow user to edit route name (UPDATE)' do
+    Route.create_route("Worst Winds Loop")
+    Route.update_route("Worst Winds Loop","West Winds Loop")
+    list = Route.read_routes
+    expect(list).to eq ["West Winds Loop"]
+  end
+
+  it 'will allow user to delete a route (DELETE)' do
+    Route.create_route("West Winds Loop")
+    Route.create_route("East Winds Loop")
+    Route.delete_route("West Winds Loop")
+    list = Route.read_routes
+    expect(list).to eq ["East Winds Loop"]
+  end  
 end
