@@ -19,7 +19,7 @@ describe Route do
   end
 
     it 'will allow user to edit route name (UPDATE)' do
-    Route.create_route("Worst Winds Loop")
+    Route.create_route("West Winds Loop")
     Route.update_route("Worst Winds Loop","West Winds Loop")
     list = Route.read_routes
     expect(list).to eq ["West Winds Loop"]

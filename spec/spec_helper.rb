@@ -11,6 +11,7 @@ RSpec.configure do |config|
     DB.exec("DELETE FROM routes *;")
     DB.exec("DELETE FROM route_details *;")
     DB.exec("DELETE FROM ports *;")
+    DB.exec("ALTER SEQUENCE ports_id_seq RESTART WITH 1;")
   end
 end
 

@@ -32,4 +32,9 @@ describe Port do
     list = Port.read_ports
     expect(list).to eq ["Tortuga"]
   end
+
+  it 'will convert port name to port ID' do
+    Port.create_port("Tortuga")
+    expect(Port.get_ID("Tortuga")).to eq ["1"]
+  end
 end

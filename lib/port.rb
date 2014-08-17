@@ -11,6 +11,15 @@ class Port
     DB.exec("INSERT INTO ports (name) VALUES ('#{name}');")
   end
 
+  def self.get_ID(port_name)
+    port_id = []
+    results = DB.exec("SELECT * FROM ports WHERE name = '#{port_name}'")
+    results.each do |result|
+      port_id << result["id"]
+    end
+    port_id
+  end
+
   def self.read_ports
     ports = []
     results = DB.exec("SELECT name FROM ports")

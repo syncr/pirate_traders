@@ -45,10 +45,14 @@ def pirate_ui(choice)
   when '3'
     puts 'What route be ye addin!?'
     route_name = gets.chomp
-    puts 'What island be ye adding to the route!?'
-    island_id = gets.chomp
-    Route.create_route(route_name, island_id)
-    puts "Yar, ye route #{user_input} be added!"
+    puts 'Where be the beginning of this route!?'
+    port_name = gets.chomp
+    port_id1 = Port.get_ID(port_name)
+    puts 'Where be the ending of this route!?'
+    port_name = gets.chomp
+    port_id2 = Port.get_ID(port_name)
+    Route.create_route(route_name, port_id2)
+    puts "Yar, ye route #{route_name} be added!"
   when '4'
     puts "Yar, here be ye list'o'routes!"
     Route.read_routes

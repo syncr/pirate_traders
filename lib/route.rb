@@ -15,7 +15,6 @@ class Route
     all = []
     results = DB.exec("SELECT * FROM routes")
     results.each do |result|
-      p "yargh!"
       all << Route.new({:id => result["id"], :name => result['name']})
     end
     all
@@ -23,6 +22,7 @@ class Route
 
   def self.create_route(route_name)
     DB.exec("INSERT INTO routes (name) VALUES ('#{route_name}');")
+
   end
 
   def self.read_routes
