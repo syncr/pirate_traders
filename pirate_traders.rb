@@ -16,13 +16,16 @@ def main_menu
   puts "\n"
   puts 'Tell us what ports and routes be needin protection...'
   puts "\n"
-  puts 'Press 1 to add a port'
-  puts 'Press 2 to view all ports'
-  puts 'Press 3 to add a route'
-  puts 'Press 4 to view all routes'
-  puts 'Press 5 to add a leg to a route'
-  puts 'Press 6 to show all lines associated with a port'
-  puts 'Press 7 to show all stations associated with a route'
+  puts "Press 1 to add a port"
+  puts "Press 2 to delete a port"
+  puts "Press 3 to view all ports\n"
+
+  puts "Press 4 to add a route"
+  puts "Press 5 to view all routes"
+  puts "Press 6 to add a port to a route\n"
+
+  puts "Press 7 to show all lines associated with a port"
+  puts "Press 8 to show all stations associated with a route"
 
   choice = gets.chomp
   pirate_ui(choice)
@@ -35,49 +38,60 @@ def pirate_ui(choice)
     puts 'What port be ye addin!?'
     user_input = gets.chomp
     Port.create_port(user_input)
-    puts "Yar, #{user_input} be added to the list of ports!"
+    puts "Yar, #{user_input} be added to the list oo' ports!"
     sleep(2)
   when '2'
+    system 'clear'
+    puts 'What port be ye removin!?'
+    user_input = gets.chomp
+    Port.delete_port(user_input)
+    puts "Yar, #{user_input} be removed from yer list o' ports!"
+    sleep(2)
+  when '3'
     puts "Yar, here be ye list'o'ports!"
     puts "\n"
     puts Port.read_ports
     puts "\n"
-  when '3'
+  when '4'
     puts 'What route be ye addin!?'
     route_name = gets.chomp
-    puts 'Where be the beginning of this route!?'
-    port_name = gets.chomp
-    port_id1 = Port.get_ID(port_name)
-    puts 'Where be the ending of this route!?'
-    port_name = gets.chomp
-    port_id2 = Port.get_ID(port_name)
-    Route.create_route(route_name, port_id2)
+    Route.create_route(route_name)
     puts "Yar, ye route #{route_name} be added!"
-  when '4'
-    puts "Yar, here be ye list'o'routes!"
-    Route.read_routes
-
   when '5'
-    routes = Route.all
-    routes.each do |route|
-      p "Route ##{route.id}: #{route.name} "
-    end
+    puts "Yar, here be ye list'o'routes!"
+    puts Route.read_routes
 
-    puts "Yar, select the number of the route yee be changin!?"
-    selected_route = gets.chomp
-    puts "Where be the ship be startin?"
-    route_from = gets.chomp
-    puts "Where the ship be endin?"
-    route_to = gets.chomp
-    Route_Detail.update_route(selected_route, route_from, route_to)
+  when '6'
+    puts "Yar, here be ye list'o'routes!"
+    puts Route.read_routes
 
+    puts "Yar, enter the name of the route yee be changin!?"
+    route = gets.chomp
+    route_id = Route.get_ID(route)
 
-    puts "Argh, your routes port'o'call has been added"
-    pirate_ui
+    puts "\nHere are the ports youv got us watchin:"
+    puts Port.read_ports
+    puts "\nWhich of these ports be yee addin to this route?"
+    port = gets.chomp
+    port_id = Port.get_ID(port)
 
-  else "Nargh!"
-  end
-  main_menu
+    puts "Alrighty. We've added #{port} to yer #{route} route!"
+    Route_Detail.create_route_step(route_id, port_id)
+    sleep(3)
+
+  when '7'
+    puts "Yar, here be ye list'o'routes!"
+    puts Route.read_routes
+
+    puts "which route would you like to view!?"
+    route = gets.chomp
+    puts "Here be all the ports you've secured in the #{route} route:"
+    puts Route_details.list(route)
+
+  else "Nargh! Try again!"
+end
+system 'clear'
+main_menu
 end
 system 'clear'
 start

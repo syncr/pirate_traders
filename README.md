@@ -9,6 +9,6 @@ Tech: Ruby and PostgreSQL
 ##Tables
 Currents
 Ports
-Islands
+ports
 
 Authors: Ruben Rhodes & Jeremy Whitaker

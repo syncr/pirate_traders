@@ -35,6 +35,6 @@ describe Port do
 
   it 'will convert port name to port ID' do
     Port.create_port("Tortuga")
-    expect(Port.get_ID("Tortuga")).to eq ["1"]
+    expect(Port.get_ID("Tortuga")).to eq "1"
   end
 end

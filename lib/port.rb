@@ -12,7 +12,7 @@ class Port
   end
 
   def self.get_ID(port_name)
-    port_id = []
+    port_id = ""
     results = DB.exec("SELECT * FROM ports WHERE name = '#{port_name}'")
     results.each do |result|
       port_id << result["id"]

@@ -19,7 +19,7 @@ st. kitts (3)
 antigua (4)
 san juan (5)
 
-join table (island connection)
-islands id_1
-islands id_2
+join table (port connection)
+ports id_1
+ports id_2
 

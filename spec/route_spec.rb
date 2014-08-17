@@ -32,4 +32,9 @@ describe Route do
     list = Route.read_routes
     expect(list).to eq ["East Winds Loop"]
   end  
+
+  it 'will convert route name to port ID' do
+    Route.create_route("West Winds Loop")
+    expect(Route.get_ID("West Winds Loop")).to eq "1"
+  end
 end

@@ -20,9 +20,17 @@ class Route
     all
   end
 
+  def self.get_ID(route_name)
+    route_id = ""
+    results = DB.exec("SELECT * FROM routes WHERE name = '#{route_name}'")
+    results.each do |result|
+      route_id << result["id"]
+    end
+    route_id
+  end
+
   def self.create_route(route_name)
     DB.exec("INSERT INTO routes (name) VALUES ('#{route_name}');")
-
   end
 
   def self.read_routes
@@ -36,7 +44,6 @@ class Route
 
   def self.update_route(old_name, new_name)
     DB.exec("UPDATE routes SET name = '#{new_name}' WHERE name = '#{old_name}';")
-
   end
 
   def self.delete_route(name)
