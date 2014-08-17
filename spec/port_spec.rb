@@ -6,16 +6,31 @@ describe Port do
     expect(new_port).to be_an_instance_of Port
   end
 
-  it 'will add a new instance of Port to the DB' do
+  it 'will add a new instance of Port to the DB(CREATE)' do
     Port.create_port("Tortuga")
     expect(DB.exec("SELECT * FROM ports;").first['name']).to eq 'Tortuga'
   end
 
-  it 'will list all ports' do
+  it 'will list all ports(READ)' do
     Port.create_port("Tortuga")
     Port.create_port("Puerto Vallarta")
-    list = Port.list_ports
+    list = Port.read_ports
     expect(list).to eq ["Tortuga", "Puerto Vallarta"]
+  end
+
+  it 'will allow user to edit port name (UPDATE)' do
+    Port.create_port("Tortilla")
+    Port.update_port("Tortilla","Tortuga")
+    list = Port.read_ports
+    expect(list).to eq ["Tortuga"]
+  end
+
+  it 'will allow user to delete a port (DELETE)' do
+    Port.create_port("Tortilla")
+    Port.create_port("Puerto Vallarta")
+    Port.delete_port("Puerto Vallarta")
+    list = Port.read_ports
+    expect(list).to eq ["Tortuga"]
   end
 
 end

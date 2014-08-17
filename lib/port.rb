@@ -11,7 +11,7 @@ class Port
     DB.exec("INSERT INTO ports (name) VALUES ('#{name}');")
   end
 
-  def self.list_ports
+  def self.read_ports
     ports = []
     results = DB.exec("SELECT name FROM ports")
     results.each do |result|
@@ -20,6 +20,11 @@ class Port
     ports
   end
 
+  def self.update_port(old_name, new_name)
+    DB.exec("UPDATE ports SET name = '#{new_name}' WHERE name = '#{old_name}';")
+  end
+
+  
 end
 # tortuga = Port.new(1)
 # puerto vallarta (2)
