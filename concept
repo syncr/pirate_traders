@@ -1,16 +1,7 @@
-
             route 1           route 2             route 3
-
 tortuga      Mon                Wed                 Fri
-
-
-
 st. kitts                       Thurs               Sat
-
-
-
 san juan     Fri                Mon
-
 
 When you want to list out the trade routes that go through a particular port, you'll need to start by selecting all of the visits to that port, and then selecting all of the trade routes for those ports.
 
@@ -21,8 +12,7 @@ odds    (1,3,5)
 evens   (1,2,4)
 star    (1,4,2,5,3)
 
-
-5 islands
+5 ports
 tortuga (1)
 puerto vallarta (2)
 st. kitts (3)
