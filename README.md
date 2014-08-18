@@ -13,8 +13,10 @@ Routes (id, name)
 Route_details (id, port_id, route_id)
 
 ##Functions covered:
+
 CRUD methods for Ports, Routes
-UI support for puts 
+
+UI support:
 * add a port
 * delete a port
 * view all ports
