@@ -15,12 +15,12 @@ Route_details (id, port_id, route_id)
 ##Functions covered:
 CRUD methods for Ports, Routes
 UI support for puts 
-    * add a port
-    * delete a port
-    * view all ports
-    * add a route
-    * view all routes
-    * add a port to a route
-    * show all lines associated with a port
+* add a port
+* delete a port
+* view all ports
+* add a route
+* view all routes
+* add a port to a route
+* show all lines associated with a port
 
 Author: Jeremy Whitaker
