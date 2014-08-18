@@ -86,8 +86,8 @@ def pirate_ui(choice)
     puts "which route would you like to view!?"
     route = gets.chomp
     puts "Here be all the ports you've secured in the #{route} route:"
-    puts Route_details.list(route)
-
+    puts Route.list(route)
+    sleep(7)
   else "Nargh! Try again!"
 end
 system 'clear'

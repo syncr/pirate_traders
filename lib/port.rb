@@ -36,4 +36,5 @@ class Port
   def self.delete_port(name)
     DB.exec("DELETE FROM ports WHERE name = '#{name}';")
   end
+  # show all lines associated with a port
 end

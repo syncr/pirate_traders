@@ -11,6 +11,4 @@ class Route_Detail
   def self.create_route_step(route_id, port_id)
     DB.exec("INSERT INTO route_details (route_id, port_id) VALUES ('#{route_id}', '#{port_id}');")
   end
-
-
 end

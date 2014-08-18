@@ -50,4 +50,18 @@ class Route
     DB.exec("DELETE FROM routes WHERE name = '#{name}';")
   end
 
+  def self.list(route) #join table to show all ports associated with a line
+    stops = []
+    results = DB.exec("SELECT ports.* 
+                FROM routes 
+                JOIN ports 
+                    ON (route_details.port_id = ports.id)
+                JOIN route_details 
+                    ON (route_details.route_id = routes.id)
+                WHERE routes.name = '#{route}';")
+    results.each do |result|
+      stops << result["name"]
+    end
+    stops
+  end
 end
